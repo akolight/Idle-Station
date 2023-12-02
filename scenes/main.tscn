@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://ivyg2eywpjyf"]
+[gd_scene load_steps=4 format=3 uid="uid://ivyg2eywpjyf"]
+
+[ext_resource type="PackedScene" uid="uid://su3l84vddrlu" path="res://scenes/train.tscn" id="1_6rwhm"]
+[ext_resource type="Theme" uid="uid://dxlfa7i4mbp6i" path="res://themes/icon_buttons.tres" id="2_nh7ak"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oj51a"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -8,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="TopUI" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -17,17 +22,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.823529, 0.192157, 1)
 
-[node name="MoneyPoly2" type="Polygon2D" parent="Panel"]
+[node name="MoneyPoly2" type="Polygon2D" parent="TopUI"]
 position = Vector2(10, 0)
 color = Color(0.607843, 0, 0.286275, 1)
 polygon = PackedVector2Array(-10, 192, 422, 192, 398, 272, -10, 272)
 
-[node name="MoneyPoly" type="Polygon2D" parent="Panel"]
+[node name="MoneyPoly" type="Polygon2D" parent="TopUI"]
 position = Vector2(10, 0)
 color = Color(0.929412, 0, 0.454902, 1)
 polygon = PackedVector2Array(-10, 192, 414, 192, 390, 264, -10, 264)
 
-[node name="Money" type="Label" parent="Panel"]
+[node name="Money" type="Label" parent="TopUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -40,7 +45,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 60
 text = "CASH MONEY"
 
-[node name="StationName" type="Label" parent="Panel"]
+[node name="StationName" type="Label" parent="TopUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,11 +64,170 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 100
 text = "Station One"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Trains" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.1
+anchor_top = 0.15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.14441e-05
+grow_horizontal = 0
+
+[node name="Train" parent="Trains" instance=ExtResource("1_6rwhm")]
+layout_direction = 2
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 1152.0
+offset_right = 1080.0
+offset_bottom = 1352.0
+
+[node name="BotUI" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 75.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.0705882, 0.309804, 1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BotUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -162.0
+offset_right = -275.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Trains - List of trains, stats, and performance"
+color = Color(1, 0.2, 0.47451, 1)
+
+[node name="Label" type="Label" parent="BotUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh7ak")
+text = "T"
+
+[node name="ColorRect2" type="ColorRect" parent="BotUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -162.0
+offset_right = -25.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Office - Marketing options + staffing (basic & premium)"
+color = Color(1, 0.2, 0.47451, 1)
+
+[node name="Label" type="Label" parent="BotUI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -102.5
+offset_right = 59.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh7ak")
+text = "O"
+
+[node name="ColorRect3" type="ColorRect" parent="BotUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -162.0
+offset_right = 225.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Checklist - missions for bonus basic/premium currency. updates daily/weekly"
+color = Color(1, 0.2, 0.47451, 1)
+
+[node name="Label" type="Label" parent="BotUI/ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh7ak")
+text = "C"
+
+[node name="ColorRect4" type="ColorRect" parent="BotUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 275.0
+offset_top = -162.0
+offset_right = 475.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "World - shows list of stations, and event station"
+color = Color(1, 0.2, 0.47451, 1)
+
+[node name="Label" type="Label" parent="BotUI/ColorRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh7ak")
+text = "W"
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_oj51a")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 3.02058e-16, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 5, 2.799, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.806114, 0.59176, 0, -0.59176, 0.806114, 0, 6.02818, 5.86447)
