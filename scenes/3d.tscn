@@ -1,160 +1,42 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbybnn3gu51bl"]
+[gd_scene load_steps=7 format=3 uid="uid://bbybnn3gu51bl"]
 
 [ext_resource type="Script" path="res://scripts/3d.gd" id="1_eyib4"]
+[ext_resource type="PackedScene" uid="uid://nxob5bijpwg" path="res://models/traintiny.glb" id="2_8heqd"]
+[ext_resource type="Animation" uid="uid://djaehupa4h77e" path="res://animations/station_leave.res" id="2_g5hxy"]
+[ext_resource type="Animation" uid="uid://cnrb24faoo7at" path="res://animations/station_arrive.res" id="3_k1nee"]
 
-[sub_resource type="Animation" id="Animation_ob0o2"]
-resource_name = "new_animation"
-length = 2.0
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/MeshInstance3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 5.17004, 0, 0, 2, 1, -11.1403, 0, 0)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D/MeshInstance3D2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 7.01684, 0, 0, 2, 1, -9.29352, 0, 0)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/MeshInstance3D4")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 9.32443, 0, 0, 2, 1, -6.98594, 0, 0)
-tracks/3/type = "position_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node3D/MeshInstance3D3")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 4, 2.08165e-12, 2.08165e-12, 2, 1, -12.3104, 2.08165e-12, 2.08165e-12)
-tracks/4/type = "position_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node3D/MeshInstance3D5")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 11.1459, 2.08165e-12, -5.11847e-08, 2, 1, -5.16442, 2.08165e-12, -5.11847e-08)
-tracks/5/type = "position_3d"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node3D/MeshInstance3D6")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = PackedFloat32Array(0, 1, 12.317, 2.08165e-12, 5.11888e-08, 2, 1, -3.9934, 2.08165e-12, 5.11888e-08)
-
-[sub_resource type="Animation" id="Animation_283ar"]
-resource_name = "station_arrive"
-length = 2.0
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 2.5, 2.08165e-12, 2.5, 1, 1, -2.45896, 2.08165e-12, 2.5, 2, 1, -3.98056, 2.08165e-12, 2.5)
-
-[sub_resource type="Animation" id="Animation_sipvg"]
-resource_name = "station_lea ve"
-length = 2.0
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -3.98056, 2.08165e-12, 2.5, 1, 1, -5.74916, 2.08165e-12, 2.5, 2, 1, -10.5808, 2.08165e-12, 2.5)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_425km"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_he4oy"]
 _data = {
-"new_animation": SubResource("Animation_ob0o2"),
-"station_arrive": SubResource("Animation_283ar"),
-"station_leave": SubResource("Animation_sipvg")
+"station_arrive": ExtResource("3_k1nee"),
+"station_leave": ExtResource("2_g5hxy")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_hbtnj"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_2w1w7"]
-left_to_right = 1.0
-size = Vector3(0.5, 1, 1)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wn2sr"]
-animation = &"station_arrive"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enfo6"]
-animation = &"station_leave"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kuxkq"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgbk3"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6o5s6"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ow8un"]
-states/station_arrive/node = SubResource("AnimationNodeAnimation_wn2sr")
-states/station_arrive/position = Vector2(365.5, 100)
-states/station_leave/node = SubResource("AnimationNodeAnimation_enfo6")
-states/station_leave/position = Vector2(638, 100.25)
-transitions = ["Start", "station_arrive", SubResource("AnimationNodeStateMachineTransition_kuxkq"), "station_arrive", "station_leave", SubResource("AnimationNodeStateMachineTransition_pgbk3"), "station_leave", "End", SubResource("AnimationNodeStateMachineTransition_6o5s6")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_au6v7"]
+_data = {
+"station_leave": ExtResource("2_g5hxy")
+}
 
 [node name="3D" type="Node3D"]
 script = ExtResource("1_eyib4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -6.50845e-16, 1.74393e-16, 1.74393e-16, 0.5, 0.866025, -6.50845e-16, -0.866025, 0.5, 2.08165e-12, 5, 9.02392)
+transform = Transform3D(1, -6.50845e-16, 1.74394e-16, 1.74393e-16, 0.5, 0.866025, -6.50845e-16, -0.866025, 0.5, 2.08165e-12, 18.4825, 32.8363)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.806114, 0.59176, 0, -0.59176, 0.806114, 0, 6.02818, 5.86447)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="station_arrive" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_425km")
+"": SubResource("AnimationLibrary_he4oy")
 }
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="traintiny" parent="." instance=ExtResource("2_8heqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8944, 2.08165e-12, 24.689)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1.24889, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_hbtnj")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(2.20503, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_hbtnj")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(2.20503, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_hbtnj")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(2.20503, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("PrismMesh_2w1w7")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(-1.24889, 0, 8.74228e-08, 0, 1, 0, -1.09182e-07, 0, -1, 0, 0, 0)
-mesh = SubResource("BoxMesh_hbtnj")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(-2.20503, 0, 8.74228e-08, 0, 1, 0, -1.9277e-07, 0, -1, 0, 0, 0)
-mesh = SubResource("PrismMesh_2w1w7")
-skeleton = NodePath("")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="station_leave" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_425km")
+"": SubResource("AnimationLibrary_au6v7")
 }
-tree_root = SubResource("AnimationNodeStateMachine_ow8un")
-anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="animation_finished" from="station_arrive" to="." method="_on_station_arrive_animation_finished"]
+[connection signal="animation_finished" from="station_leave" to="." method="_on_station_leave_animation_finished"]
