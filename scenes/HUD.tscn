@@ -2,10 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://su3l84vddrlu" path="res://scenes/train.tscn" id="1_6rwhm"]
 [ext_resource type="Theme" uid="uid://dxlfa7i4mbp6i" path="res://themes/icon_buttons.tres" id="2_nh7ak"]
+[ext_resource type="PackedScene" uid="uid://bbybnn3gu51bl" path="res://scenes/3d.tscn" id="3_ipun0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_oj51a"]
-
-[node name="Main" type="Control"]
+[node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -221,13 +220,15 @@ grow_vertical = 2
 theme = ExtResource("2_nh7ak")
 text = "W"
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="3D" parent="." instance=ExtResource("3_ipun0")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_oj51a")
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 296.0
+offset_right = 377.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 60
+text = "gimme train"
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 3.02058e-16, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 5, 2.799, 5)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.806114, 0.59176, 0, -0.59176, 0.806114, 0, 6.02818, 5.86447)
+[connection signal="pressed" from="Button" to="3D" method="_on_button_pressed"]
